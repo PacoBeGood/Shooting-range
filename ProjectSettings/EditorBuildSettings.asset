@@ -11,19 +11,19 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Menu.unity
     guid: bb981d15ebf334602ab9d17743c769bc
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/GrabObject.unity
     guid: dc8ccc88355d449c08f71bf1694390bb
   - enabled: 0
     path: Assets/Scenes/SnapTurnTeleport.unity
     guid: 726a023dd7c354d4ab0964bee1c763db
   - enabled: 0
-    path: Assets/Scenes/TeleportAreas.unity
+    path: Assets/Scenes/TeleportAreas - Jenga.unity
     guid: 580b00f4f4efa4e37b5111e45e4a6aa9
   - enabled: 0
     path: Assets/Scenes/Room.unity
     guid: 8b7ac5fd2d6f84ca4ab1e7f6f68841dc
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Carnival.unity
     guid: c968cbca68d1048208025f7a2ba2537b
   m_configObjects:
