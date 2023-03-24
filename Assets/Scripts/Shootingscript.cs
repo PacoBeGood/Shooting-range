@@ -7,6 +7,7 @@ public class Shootingscript : MonoBehaviour
 
     [SerializeField] GameObject gun;
      GameObject bullet1;
+     [SerializeField] Transform bulletSpawn;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,13 +17,16 @@ public class Shootingscript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         bullet1.transform.position = bullet1.transform.localPosition += new Vector3(0,0,1);
+       
+         
     }
 
     public void Shoot()
     {
         bullet1 = Instantiate(gameObject);
-        bullet1.transform.position = gun.transform.position;
+        bulletSpawn.GetComponent<Collider>();
+        bullet1.transform.position = bulletSpawn.position;
+        bullet1.GetComponent<Rigidbody>().AddForce(bulletSpawn.forward * 1, ForceMode.Impulse);
         
        
     }
