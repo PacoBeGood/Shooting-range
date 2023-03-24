@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -437,6 +437,7 @@ GameObject:
   - component: {fileID: 441338507}
   - component: {fileID: 441338506}
   - component: {fileID: 441338510}
+  - component: {fileID: 441338511}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -536,6 +537,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gun: {fileID: 627358965}
   bulletSpawn: {fileID: 627358971}
+--- !u!54 &441338511
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441338505}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &447118102
 GameObject:
   m_ObjectHideFlags: 0

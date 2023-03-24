@@ -26,7 +26,7 @@ public class Shootingscript : MonoBehaviour
         bullet1 = Instantiate(gameObject);
         bulletSpawn.GetComponent<Collider>();
         bullet1.transform.position = bulletSpawn.position;
-        bullet1.GetComponent<Rigidbody>().AddForce(bulletSpawn.forward * 1, ForceMode.Impulse);
+        bullet1.GetComponent<Rigidbody>().AddForce(bulletSpawn.forward * 20, ForceMode.Impulse);
         
        
     }
