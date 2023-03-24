@@ -16,7 +16,7 @@ public class Shootingscript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         bullet1.transform.position = gun.transform.localPosition += new Vector3(0,0,1);
+         bullet1.transform.position = bullet1.transform.localPosition += new Vector3(0,0,1);
     }
 
     public void Shoot()
