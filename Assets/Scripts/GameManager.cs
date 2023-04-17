@@ -1,52 +1,45 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-  [SerializeField] GameObject cubePrefab;
-  [SerializeField] GameObject spherePrefab;
-  [SerializeField] GameObject capsulePrefab;
-  [SerializeField] GameObject cylinderPrefab;
-  [SerializeField] Button spawnCubeButton;
-  [SerializeField] Button spawnSphereButton;
-  [SerializeField] Button spawnCapsuleButton;
-  [SerializeField] Button spawnCylinderButton;
-
-  void SpawnObject(string objectName)
-  {
-    float randomX = Random.Range(-3f, 3f);
-    float randomY = Random.Range(1f, 3f);
-    float randomZ = Random.Range(0f, 3f);
-
-    switch (objectName)
+    public static GameManager gameManager;
+    private int score;
+    [SerializeField] private TMP_Text scoreText; 
+    private void Awake()
     {
-      case "Cube":
-        Instantiate(cubePrefab, new Vector3(randomX, randomY, randomZ), Quaternion.identity);
-        break;
-      case "Sphere":
-        Instantiate(spherePrefab, new Vector3(randomX, randomY, randomZ), Quaternion.identity);
-        break;
-      case "Capsule":
-        Instantiate(capsulePrefab, new Vector3(randomX, randomY, randomZ), Quaternion.identity);
-        break;
-      case "Cylinder":
-        Instantiate(cylinderPrefab, new Vector3(randomX, randomY, randomZ), Quaternion.identity);
-        break;
+        if (gameManager != null && gameManager != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            gameManager = this;
+        }
     }
-  }
+    void Start()
+    {
+        score = 0;
+    }
 
-  // Start is called before the first frame update
-  void Start()
-  {
-    spawnCubeButton.onClick.AddListener(() => SpawnObject("Cube"));
-    spawnSphereButton.onClick.AddListener(() => SpawnObject("Sphere"));
-    spawnCapsuleButton.onClick.AddListener(() => SpawnObject("Capsule"));
-    spawnCylinderButton.onClick.AddListener(() => SpawnObject("Cylinder"));
-  }
 
-  // Update is called once per frame
-  void Update()
-  {
-
-  }
+    void Update()
+    {
+        scoreText.text = "Score: " + score;
+    }
+    public void Score1()
+    {
+     score = score + 1; 
+    }
+    public void Score2()
+    {
+     score = score + 2; 
+    }
+    public void Score3()
+    {
+     score = score + 3; 
+    }
 }
