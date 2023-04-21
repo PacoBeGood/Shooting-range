@@ -8,7 +8,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
     private int score;
-    [SerializeField] private TMP_Text scoreText; 
+    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] GameObject gun;
+    GameObject bullet1;
+    [SerializeField] Transform bulletSpawn;
+    bool gunHeld;
     private void Awake()
     {
         if (gameManager != null && gameManager != this)
@@ -23,6 +27,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         score = 0;
+        gunHeld = false;
     }
 
 
@@ -32,14 +37,43 @@ public class GameManager : MonoBehaviour
     }
     public void Score1()
     {
-     score = score + 1; 
+        score = score + 1;
     }
     public void Score2()
     {
-     score = score + 2; 
+        score = score + 2;
     }
     public void Score3()
     {
-     score = score + 3; 
+        score = score + 3;
+    }
+    public void Shoot()
+    {
+        if (gunHeld == true)
+        {
+            bullet1 = Objectpool.SharedInstance.GetPooledObject();
+            if (bullet1 != null)
+            {
+                bulletSpawn.GetComponent<Collider>();
+                bullet1.SetActive(true);
+                bullet1.transform.position = bulletSpawn.position;
+                bullet1.GetComponent<Rigidbody>().AddForce(bulletSpawn.forward * -20, ForceMode.Impulse);
+                Physics.IgnoreCollision(gun.GetComponent<Collider>(), bullet1.GetComponent<Collider>());
+
+            }
+
+        }
+    }
+    public void GunInHand()
+    {
+        gunHeld = true;
+    }
+    public void GunOutOfHand()
+    {
+        gunHeld = false;
+    }
+    public void BulletInactive()
+    {
+        bullet1.SetActive(false);
     }
 }
