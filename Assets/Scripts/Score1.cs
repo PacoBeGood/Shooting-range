@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Score1 : MonoBehaviour
 {
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter()
     {
-        Destroy(other);
+        
         GameManager.gameManager.Score1();
     }
 }
