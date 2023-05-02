@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: bb981d15ebf334602ab9d17743c769bc
   - enabled: 1
-    path: Assets/Scenes/GrabObject.unity
+    path: Assets/Scenes/InsideRange.unity
     guid: dc8ccc88355d449c08f71bf1694390bb
   - enabled: 0
     path: Assets/Scenes/SnapTurnTeleport.unity

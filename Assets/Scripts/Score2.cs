@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Score2 : MonoBehaviour
 {
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision other)
     {
-        if (other.tag == "Bullet")
+        if (other.gameObject.tag == "Bullet")
         {
             GameManager.gameManager.Score2();
-            GameManager.gameManager.BulletInactive();
+            Debug.Log("score2!");
+            
         }
 
     }
