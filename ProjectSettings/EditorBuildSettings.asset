@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/ContiniousMove.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: bb981d15ebf334602ab9d17743c769bc
   - enabled: 1
@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Carnival.unity
     guid: c968cbca68d1048208025f7a2ba2537b
+  - enabled: 1
+    path: Assets/Scenes/OutsideRange.unity
+    guid: d2654b2bac245014bb90d94b5f2d1609
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 0fae67c0a3a24459f82f9dd9829337ec,
       type: 2}

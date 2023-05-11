@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     public int score;
     [SerializeField] private TMP_Text scoreText;
     public TMP_Text highscoreText;
+    public TMP_Text LastScoreText;
     [SerializeField] private TMP_Text bulletsLeftText;
     public int highscore;
     [SerializeField] GameObject gun;
@@ -23,7 +25,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] bool leftSide;
     [SerializeField] bool rightSide;
     [SerializeField] GameObject target;
-    int bulletsLeft = 8;
+    public int bulletsLeft = 8;
+    int LastScore;
+    bool outsideRangeActive; 
     private void Awake()
     {
         if (gameManager != null && gameManager != this)
@@ -44,6 +48,8 @@ public class GameManager : MonoBehaviour
         loadButton.onClick.AddListener(LoadGame);
         rightSide = true;
         leftSide = false;
+        outsideRangeActive = false;
+            
         
 
     }
@@ -53,6 +59,7 @@ public class GameManager : MonoBehaviour
     {
         scoreText.text = "Score: " + score;
         highscoreText.text = "highscore: " + highscore;
+        LastScoreText.text = "Last Score: " + LastScore;
         bulletsLeftText.text = "" + bulletsLeft; 
 
         if (rightSide == true)
@@ -63,6 +70,14 @@ public class GameManager : MonoBehaviour
         {
             target.gameObject.transform.position += new Vector3 (0.1f,0,0);
         }
+        if (bulletsLeft == 0 && outsideRangeActive == false )
+        {
+            canShoot = false;
+            SceneManager.LoadScene("OutsideRange");
+            outsideRangeActive = true;
+            
+        }
+        
 
     }
     public void LeftSideHit()
@@ -140,16 +155,26 @@ public class GameManager : MonoBehaviour
     }
     public void SaveGame()
     {
-        PlayerData playerData = new PlayerData();
-        playerData.scoresave = score;
-        string json = JsonUtility.ToJson(playerData);
-        System.IO.File.WriteAllText(Application.dataPath + "/playerData.json", json);
+        PlayerData.Instance.scoresave = score;
+        string json = JsonUtility.ToJson(PlayerData.Instance);
+        PlayerPrefs.SetString("PlayerData", json);
+        PlayerPrefs.Save();
     }
     public void LoadGame()
     {
-        string json = System.IO.File.ReadAllText(Application.dataPath + "/playerData.json");
-        PlayerData playerData = JsonUtility.FromJson<PlayerData>(json);
-        highscore = playerData.scoresave;
+        string json = PlayerPrefs.GetString("Save");
+        PlayerData.Instance = JsonUtility.FromJson<PlayerData>(json);
+
+        if (PlayerData.Instance.scoresave > highscore)
+        {
+            highscore = PlayerData.Instance.scoresave;    
+            LastScore = PlayerData.Instance.scoresave;
+        }
+        else
+        {
+            LastScore = PlayerData.Instance.scoresave;
+        }
+        
 
     }
 
